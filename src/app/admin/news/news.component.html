@@ -1,0 +1,146 @@
+
+<div id="wrapper" >
+
+  <aside id="sidebar-wrapper">
+    <div class="sidebar-brand">
+      <h2>Menu</h2>
+    </div>
+    <ul class="sidebar-nav">
+
+      <li>
+        <a href="/admin/events"><mdb-icon far icon="calendar-alt"></mdb-icon>  Events</a>
+      </li>
+      <li>
+        <a href="/admin/news"><mdb-icon far icon="newspaper"></mdb-icon> News</a>
+      </li>
+      <li>
+        <a href="/admin/users"><mdb-icon fas icon="users"></mdb-icon>  Users</a>
+      </li>
+      <li>
+        <a href="/admin/presentation"> <mdb-icon fas icon="file-contract"></mdb-icon> Presentation</a>
+      </li>
+    </ul>
+  </aside>
+
+  <div id="navbar-wrapper">
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a  class="navbar-brand" id="sidebar-toggle"><i class="fa fa-bars"></i></a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <section id="content-wrapper">
+
+
+
+
+
+<div class="modal fade" #contentModal1 mdbModal id="contentModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold event">News</h4>
+        <button type="button" class="close"  (click)="hide1()"data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <form #newsForm=ngForm [formGroup]="form1" (ngSubmit)="onSubmitnew()">
+          <div class="d-flex flex-row align-items-center mb-4">
+            <div class="form-outline flex-fill mb-0">
+              <div class="md-form">
+                <input type="email" id="email" class="form-control" mdbInput mdbValidate  required  formControlName="title1">
+                <label class="form-label"  >Title</label>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex flex-row align-items-center mb-4">
+            <div class="form-outline flex-fill mb-0">
+              <div class="md-form">
+                <textarea id="form19" class="md-textarea form-control" rows="3" class="form-control" mdbInput mdbValidate  required  formControlName="description1"></textarea>
+                <label class="form-label"  >Description</label>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex flex-row align-items-center mb-4">
+
+            <div class="md-form mb-5">
+
+
+              <input type="file" class="custom-file-input " id="inputGroupFile01"   formControlName="filenew" (change)="fileNew($event)" >
+              <label class="custom-file-label" >Choose file</label>
+              <br/>
+              <br/>
+              <span *ngIf="filedata != null">{{filedata.name}}</span>
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button class="btn btnevent">Create</button>
+          </div>
+        </form>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
+
+<!-- New table -->
+
+
+  <div class="card">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">News table</h3>
+    <div class="card-body">
+      <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                        <span class="table-add float-right mb-3 mr-2">
+                            <a class="text-success" (click)="add1()">
+                                <mdb-icon fas icon="plus" size="2x"></mdb-icon>
+                            </a>
+                            </span>
+        <table class="table table-bordered table-striped mb-0">
+          <thead>
+          <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let el of tab; let i = index">
+
+            <td scope="row">
+              <img src="http://localhost:8000/storage/{{el?.imagenews}}" class="img-fluid" alt="photo">
+            </td>
+            <td>{{el.titrenews}}</td>
+            <td>{{el.descriptionnews}}</td>
+            <td>
+                                    <span class="table-remove">
+                                        <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(el)">Remove</button>
+                                    </span>
+              <span >
+                                        <button type="button" mdbBtn color="success" rounded="true" size="sm" class="mt-5" (click)="updateNew(el,i)">Update</button>
+                                    </span>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- Editable table -->
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</section>
+</div>
