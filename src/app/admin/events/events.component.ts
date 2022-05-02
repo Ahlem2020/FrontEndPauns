@@ -170,6 +170,7 @@ export class EventsComponent implements OnInit {
   fileEvent(e)
   {
     this.filedataEvent = e.target.files[0];
+    console.log(this.filedataEvent);
 
   }
   fileNew(e)
